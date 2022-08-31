@@ -52,7 +52,6 @@ public class Day05 extends SingleLineAdventOfCodeDay<String, String> {
         final Set<Integer> alreadySetPositions = new HashSet<>();
 
         return hashesWithLeadingZero(doorId, numberOfZeros)
-                .parallel()
                 .map(hash -> Pair.of(hash.charAt(numberOfZeros), hash.charAt(numberOfZeros + 1)))
                 .filter(pair -> {
                     final String positionAsString = Objects.toString(pair.getLeftValue());
