@@ -1,6 +1,8 @@
 package de.tilmanschweitzer.adventofcode.aoc2016.day09;
 
 import de.tilmanschweitzer.adventofcode.common.Pair;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,6 +15,7 @@ class Day09Test {
     }
 
     @Test
+    @Disabled("Takes too long")
     void getResultOfSecondPuzzle() {
         assertEquals(11451628995L, new Day09().getResultOfSecondPuzzle());
     }

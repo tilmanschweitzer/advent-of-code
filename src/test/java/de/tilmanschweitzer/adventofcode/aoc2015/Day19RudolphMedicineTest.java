@@ -2,6 +2,8 @@ package de.tilmanschweitzer.adventofcode.aoc2015;
 
 import de.tilmanschweitzer.adventofcode.aoc2015.Day19RudolphMedicine.Replacement;
 import de.tilmanschweitzer.adventofcode.aoc2015.Day19RudolphMedicine.ReplacementAtPosition;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -19,6 +21,7 @@ class Day19RudolphMedicineTest {
     }
 
     @Test
+    @Disabled("Unsolved and takes too long")
     void getResultOfSecondPuzzle() {
         assertEquals(0, new Day19RudolphMedicine().getResultOfSecondPuzzle());
     }

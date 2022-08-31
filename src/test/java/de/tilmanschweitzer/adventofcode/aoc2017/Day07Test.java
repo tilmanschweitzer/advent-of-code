@@ -88,12 +88,11 @@ class Day07Test {
 
     @Test
     void weightsOfNode() {
-        assertEquals(251, Day07.weightsOfNode(towerDescriptions, "ugml").collect(toUnmodifiableList()));
-        assertEquals(243, Day07.weightsOfNode(towerDescriptions, "padx").collect(toUnmodifiableList()));
-        assertEquals(243, Day07.weightsOfNode(towerDescriptions, "fwft").collect(toUnmodifiableList()));
+        assertEquals(List.of(68, 61, 61, 61), Day07.weightsOfNode(towerDescriptions, "ugml").collect(toUnmodifiableList()));
+        assertEquals(List.of(45, 66, 66, 66), Day07.weightsOfNode(towerDescriptions, "padx").collect(toUnmodifiableList()));
+        assertEquals(List.of(72, 57, 57, 57), Day07.weightsOfNode(towerDescriptions, "fwft").collect(toUnmodifiableList()));
         assertEquals(List.of(1, 2, 3, 4, 5), Day07.weightsOfNode(linearTowerDescriptions, "a").collect(toUnmodifiableList()));
     }
-
 
     @Test
     void getUpdatedTowerDescriptionToBalanceWeight() {

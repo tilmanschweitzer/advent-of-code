@@ -36,7 +36,7 @@ class Day08Test {
         final Registers registers = new Registers();
         registers.execute(instructions);
 
-        assertEquals("Day08.Registers(registers={a=1, c=-10})", registers.toString());
+        assertEquals("Day08.Registers(highestRegisteredValue=10, registers={a=1, c=-10})", registers.toString());
         assertEquals(1, registers.getLargestValueInAnyRegister());
     }
 }
