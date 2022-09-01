@@ -13,3 +13,16 @@ Run a puzzle
 
     # Puzzle of 2017 for day 8 part 2
     ./build-and-run.sh 2017 8 2
+
+
+## Tests
+
+Run tests
+
+    mvn test
+
+## Architecture tests
+
+Run ArchUnit
+
+    mvn test -PArchUnit
