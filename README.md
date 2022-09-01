@@ -1,9 +1,10 @@
 # Advent of Code
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tilmanschweitzer/advent-of-code/Tests)
-![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/tilmanschweitzer/advent-of-code)
-![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/tilmanschweitzer/advent-of-code)
-![Code Climate coverage](https://img.shields.io/codeclimate/coverage/tilmanschweitzer/advent-of-code)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tilmanschweitzer/advent-of-code/Tests)](https://github.com/tilmanschweitzer/advent-of-code/actions/workflows/test.yml)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/tilmanschweitzer/advent-of-code)](https://codeclimate.com/github/tilmanschweitzer/advent-of-code)
+[![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/tilmanschweitzer/advent-of-code)](https://codeclimate.com/github/tilmanschweitzer/advent-of-code/issues)
+[![Code Climate coverage](https://img.shields.io/codeclimate/coverage/tilmanschweitzer/advent-of-code)](https://codeclimate.com/github/tilmanschweitzer/advent-of-code/code?sort=test_coverage)
+
 
 > Solutions for advent of code puzzles in Java.
 
