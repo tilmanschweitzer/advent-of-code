@@ -30,6 +30,11 @@ jobs:
       with:
         coverageCommand: mvn jacoco:report
         coverageLocations: ${{github.workspace}}/target/site/jacoco/jacoco.xml:jacoco
+    - name: Publish Test Report
+      uses: mikepenz/action-junit-report@v3
+      if: always()
+      with:
+        report_paths: 'target/surefire-reports/TEST-*.xml'
   archunit:
     runs-on: ubuntu-latest
     steps:
