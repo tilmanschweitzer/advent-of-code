@@ -39,7 +39,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>de.tilmanschweitzer.adventofcode.app.AdventOfCode</mainClass>
+                            <mainClass>de.tilmanschweitzer.adventofcode.cli.AdventOfCode</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

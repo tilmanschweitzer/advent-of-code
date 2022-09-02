@@ -1,5 +1,6 @@
-package de.tilmanschweitzer.adventofcode.app;
+package de.tilmanschweitzer.adventofcode.cli;
 
+import de.tilmanschweitzer.adventofcode.registry.AdventOfCodeRegistry;
 import de.tilmanschweitzer.adventofcode.day.AdventOfCodeDay;
 
 import java.util.Optional;
@@ -17,7 +18,7 @@ public class AdventOfCode {
         final int day = Integer.parseInt(args[1]);
         final int puzzle = Integer.parseInt(args[2]);
 
-        final AdventOfCodeRegistry registry = createRegistryWithExistingDays();
+        final AdventOfCodeRegistry registry = AdventOfCodeRegistry.createRegistryWithExistingDays();
 
         final Optional<AdventOfCodeDay<?, ?>> selectedDayOptional = registry.getForYearAndDay(year, day);
 
@@ -36,17 +37,5 @@ public class AdventOfCode {
             System.err.println("Each day has only 2 puzzles, but you tried to select puzzle " + puzzle);
             System.exit(1);
         }
-    }
-
-    private static AdventOfCodeRegistry createRegistryWithExistingDays() {
-        final AdventOfCodeRegistry registry = new AdventOfCodeRegistry();
-
-        final ServiceLoader<AdventOfCodeDay> serviceLoader = ServiceLoader.load(AdventOfCodeDay.class);
-
-        for (AdventOfCodeDay adventOfCodeDay : serviceLoader) {
-            registry.addDay(adventOfCodeDay);
-        }
-
-        return registry;
     }
 }
