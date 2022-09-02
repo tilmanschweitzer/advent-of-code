@@ -46,4 +46,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Run ArchUnit tests with Maven
-        run: mvn test -PArchUnit
+        run: mvn test -ParchUnit
