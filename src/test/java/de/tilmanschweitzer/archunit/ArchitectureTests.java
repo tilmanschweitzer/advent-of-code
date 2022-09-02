@@ -1,5 +1,6 @@
 package de.tilmanschweitzer.archunit;
 
+import static com.tngtech.archunit.library.Architectures.onionArchitecture;
 import static com.tngtech.archunit.library.dependencies.SlicesRuleDefinition.slices;
 
 import com.tngtech.archunit.core.domain.JavaClasses;
@@ -31,4 +32,13 @@ public class ArchitectureTests {
 				.check(importedClasses);
 	}
 
+	@ArchTest
+	public void architectureDefinedAsOnion(JavaClasses importedClasses) {
+		onionArchitecture()
+				.domainModels("..day..", "..common..")
+				.domainServices("..puzzle..")
+				.applicationServices("..registry..")
+				.adapter("cli", "..cli..")
+				.check(importedClasses);
+	}
 }
