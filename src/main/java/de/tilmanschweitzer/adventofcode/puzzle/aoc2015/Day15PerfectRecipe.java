@@ -1,9 +1,10 @@
 package de.tilmanschweitzer.adventofcode.puzzle.aoc2015;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Streams;
+
+import de.tilmanschweitzer.adventofcode.common.parser.GenericParser;
 import de.tilmanschweitzer.adventofcode.day.MultiLineAdventOfCodeDay;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,8 +12,7 @@ import lombok.ToString;
 
 import java.io.InputStream;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -139,6 +139,17 @@ public class Day15PerfectRecipe extends MultiLineAdventOfCodeDay<Day15PerfectRec
     @ToString
     @Getter
     public static class Ingredient {
+        private static final Function<String, Ingredient> parserFunction = GenericParser.createParserFunction(
+                "(\\w+): capacity (-?\\d+), durability (-?\\d+), flavor (-?\\d+), texture (-?\\d+), calories (-?\\d+)",
+                Ingredient::new,
+                GenericParser::string,
+                GenericParser::integer,
+                GenericParser::integer,
+                GenericParser::integer,
+                GenericParser::integer,
+                GenericParser::integer
+        );
+
         final String name;
         final int capacity;
         final int durability;
@@ -156,21 +167,7 @@ public class Day15PerfectRecipe extends MultiLineAdventOfCodeDay<Day15PerfectRec
         }
 
         public static Ingredient parse(String line) {
-            final Pattern parsePattern = Pattern.compile("(\\w+): capacity (-?\\d+), durability (-?\\d+), flavor (-?\\d+), texture (-?\\d+), calories (-?\\d+)");
-
-            final Matcher matcher = parsePattern.matcher(line);
-            if (!matcher.find()) {
-                throw new RuntimeException("Could not parse line: " + line);
-            }
-
-            final String name = matcher.group(1);
-            final int capacity = Integer.parseInt(matcher.group(2));
-            final int durability = Integer.parseInt(matcher.group(3));
-            final int flavor = Integer.parseInt(matcher.group(4));
-            final int texture = Integer.parseInt(matcher.group(5));
-            final int calories = Integer.parseInt(matcher.group(6));
-
-            return new Ingredient(name, capacity, durability, flavor, texture, calories);
+            return parserFunction.apply(line);
         }
     }
 }

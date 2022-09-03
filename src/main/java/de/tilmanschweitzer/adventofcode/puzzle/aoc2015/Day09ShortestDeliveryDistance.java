@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import de.tilmanschweitzer.adventofcode.common.Pair;
 import de.tilmanschweitzer.adventofcode.common.combination.OrderedCombinations;
+import de.tilmanschweitzer.adventofcode.common.parser.GenericParser;
 import de.tilmanschweitzer.adventofcode.day.MultiLineAdventOfCodeDay;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -145,6 +146,15 @@ public class Day09ShortestDeliveryDistance extends MultiLineAdventOfCodeDay<Day0
     @EqualsAndHashCode
     @ToString
     public static class Route {
+
+        private static final Function<String, Route> parserFunction = GenericParser.createParserFunction(
+                "^(\\w+)\\s+to\\s+(\\w+)\\s+=\\s+(\\d+)$",
+                Route::new,
+                GenericParser::string,
+                GenericParser::string,
+                GenericParser::integer
+        );
+
         final String start;
         final String end;
         final int distance;
@@ -156,12 +166,7 @@ public class Day09ShortestDeliveryDistance extends MultiLineAdventOfCodeDay<Day0
         }
 
         public static Route parse(String line) {
-            final Pattern routePattern = Pattern.compile("^(\\w+)\\s+to\\s+(\\w+)\\s+=\\s+(\\d+)$");
-            final Matcher routeMatcher = routePattern.matcher(line);
-            if (!routeMatcher.find()) {
-                throw new RuntimeException("Could not parse line: " + line);
-            }
-            return new Route(routeMatcher.group(1), routeMatcher.group(2), Integer.parseInt(routeMatcher.group(3)));
+            return parserFunction.apply(line);
         }
 
         public static Route reverse(Route route) {

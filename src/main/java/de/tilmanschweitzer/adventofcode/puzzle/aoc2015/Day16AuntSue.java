@@ -1,6 +1,9 @@
 package de.tilmanschweitzer.adventofcode.puzzle.aoc2015;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.Maps;
+
+import de.tilmanschweitzer.adventofcode.common.parser.GenericParser;
 import de.tilmanschweitzer.adventofcode.day.MultiLineAdventOfCodeDay;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,6 +12,7 @@ import lombok.ToString;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -95,9 +99,22 @@ public class Day16AuntSue extends MultiLineAdventOfCodeDay<Day16AuntSue.AuntSue,
     @ToString
     @Getter
     public static class AuntSue {
+        private static final Function<String, AuntSue> parserFunction = GenericParser.createParserFunction("(\\d+): (\\w+): (-?\\d+), (\\w+): (-?\\d+), (\\w+): (-?\\d+)", AuntSue::create,
+                GenericParser::integer,
+                GenericParser::string,
+                GenericParser::integer,
+                GenericParser::string,
+                GenericParser::integer,
+                GenericParser::string,
+                GenericParser::integer
+        );
 
         final int number;
         final Map<String, Integer> rememberedFacts;
+
+        public static AuntSue create(int number, String firstFact, int firstFactValue, String secondFact, int secondFactValue, String thirdFact, int thirdFactValue) {
+            return new AuntSue(number, Map.of(firstFact, firstFactValue, secondFact, secondFactValue, thirdFact, thirdFactValue));
+        }
 
         public AuntSue(int number, Map<String, Integer> rememberedFacts) {
             this.number = number;
@@ -126,22 +143,7 @@ public class Day16AuntSue extends MultiLineAdventOfCodeDay<Day16AuntSue.AuntSue,
         }
 
         public static AuntSue parse(String line) {
-            final Pattern parsePattern = Pattern.compile("(\\d+): (\\w+): (-?\\d+), (\\w+): (-?\\d+), (\\w+): (-?\\d+)");
-
-            final Matcher matcher = parsePattern.matcher(line);
-            if (!matcher.find()) {
-                throw new RuntimeException("Could not parse line: " + line);
-            }
-
-            final int number = Integer.parseInt(matcher.group(1));
-            final String firstFact = matcher.group(2);
-            final int firstFactValue = Integer.parseInt(matcher.group(3));
-            final String secondFact = matcher.group(4);
-            final int secondFactValue = Integer.parseInt(matcher.group(5));
-            final String thirdFact = matcher.group(6);
-            final int thirdFactValue = Integer.parseInt(matcher.group(7));
-
-            return new AuntSue(number, Map.of(firstFact, firstFactValue, secondFact, secondFactValue, thirdFact, thirdFactValue));
+            return parserFunction.apply(line);
         }
     }
 }

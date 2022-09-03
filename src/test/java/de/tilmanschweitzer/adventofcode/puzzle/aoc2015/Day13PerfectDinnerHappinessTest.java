@@ -1,6 +1,5 @@
 package de.tilmanschweitzer.adventofcode.puzzle.aoc2015;
 
-import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.Day13PerfectDinnerHappiness;
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.Day13PerfectDinnerHappiness.SeatPreference;
 import de.tilmanschweitzer.adventofcode.common.Ring;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,8 @@
 package de.tilmanschweitzer.adventofcode.puzzle.aoc2015;
 
 import com.google.common.collect.Lists;
+
+import de.tilmanschweitzer.adventofcode.common.parser.GenericParser;
 import de.tilmanschweitzer.adventofcode.day.MultiLineAdventOfCodeDay;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -146,6 +148,13 @@ public class Day19RudolphMedicine extends MultiLineAdventOfCodeDay<String, Integ
     @EqualsAndHashCode
     @Getter
     public static class Replacement {
+        private static final Function<String, Replacement> parserFunction = GenericParser.createParserFunction(
+                "(\\w+) => (\\w+)",
+                Replacement::new,
+                GenericParser::string,
+                GenericParser::string
+        );
+
         final String match;
         final String replacement;
 
@@ -155,12 +164,7 @@ public class Day19RudolphMedicine extends MultiLineAdventOfCodeDay<String, Integ
         }
 
         public static Replacement parse(String line) {
-            final Pattern pattern = Pattern.compile("(\\w+) => (\\w+)");
-            final Matcher matcher = pattern.matcher(line);
-            if (!matcher.find()) {
-                throw new RuntimeException("Could not parse line: " + line);
-            }
-            return new Replacement(matcher.group(1), matcher.group(2));
+            return parserFunction.apply(line);
         }
 
         @Override

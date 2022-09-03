@@ -2,6 +2,7 @@ package de.tilmanschweitzer.adventofcode.puzzle.aoc2015;
 
 import de.tilmanschweitzer.adventofcode.common.Ring;
 import de.tilmanschweitzer.adventofcode.common.combination.OrderedCombinations;
+import de.tilmanschweitzer.adventofcode.common.parser.GenericParser;
 import de.tilmanschweitzer.adventofcode.day.MultiLineAdventOfCodeDay;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -123,12 +124,27 @@ public class Day13PerfectDinnerHappiness extends MultiLineAdventOfCodeDay<Day13P
     @ToString
     @Getter
     public static class SeatPreference {
+        private static final Function<String, SeatPreference> parserFunction = GenericParser.createParserFunction(
+                "(\\w+) would (gain|lose) (\\d+) happiness units by sitting next to (\\w+)",
+                SeatPreference::create,
+                GenericParser::string,
+                GenericParser::string,
+                GenericParser::integer,
+                GenericParser::string
+        );
+
         final PersonPartnerPair personPartnerPair;
         final int happiness;
 
         public SeatPreference(String person, String partner, int happiness) {
             this.personPartnerPair = new PersonPartnerPair(person, partner);
             this.happiness = happiness;
+        }
+
+        public static SeatPreference create(String person, String gainOrLoose, int happinessFactor, String partner) {
+            final int gainOrLooseFactor = Objects.equals(gainOrLoose, "gain") ? 1 : -1;
+            final int happinessChange = gainOrLooseFactor * happinessFactor;
+            return new SeatPreference(person, partner, happinessChange);
         }
 
         public String getPerson() {
@@ -140,18 +156,7 @@ public class Day13PerfectDinnerHappiness extends MultiLineAdventOfCodeDay<Day13P
         }
 
         public static SeatPreference parse(String line) {
-            final Pattern parsePattern = Pattern.compile("(\\w+) would (gain|lose) (\\d+) happiness units by sitting next to (\\w+)");
-
-            final Matcher matcher = parsePattern.matcher(line);
-            if (!matcher.find()) {
-                throw new RuntimeException("Could not parse line: " + line);
-            }
-
-            final String person = matcher.group(1);
-            final int gainOrLooseFactor = Objects.equals(matcher.group(2), "gain") ? 1 : -1;
-            final int happinessChange = gainOrLooseFactor * Integer.parseInt(matcher.group(3));
-            final String partner = matcher.group(4);
-            return new SeatPreference(person, partner, happinessChange);
+            return parserFunction.apply(line);
         }
     }
 }

@@ -1,5 +1,6 @@
 package de.tilmanschweitzer.adventofcode.puzzle.aoc2016;
 
+import de.tilmanschweitzer.adventofcode.common.parser.GenericParser;
 import de.tilmanschweitzer.adventofcode.day.MultiLineAdventOfCodeDay;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.ToString;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -48,6 +50,14 @@ public class Day04 extends MultiLineAdventOfCodeDay<Day04.Room, Integer> {
     @ToString
     public static class Room {
 
+        private static final Function<String, Room> parserFunction = GenericParser.createParserFunction(
+                "([a-z-]+)-(\\d+)\\[([a-z]+)]",
+                Room::new,
+                GenericParser::string,
+                GenericParser::integer,
+                GenericParser::string
+        );
+
         final String encryptedName;
         final int id;
         final String checksum;
@@ -59,12 +69,7 @@ public class Day04 extends MultiLineAdventOfCodeDay<Day04.Room, Integer> {
         }
 
         public static Room parse(String line) {
-            final Pattern roomPattern = Pattern.compile("([a-z-]+)-(\\d+)\\[([a-z]+)]");
-            final Matcher matcher = roomPattern.matcher(line);
-            if (!matcher.find()) {
-                throw new RuntimeException("Could not parse " + line);
-            }
-            return new Room(matcher.group(1), Integer.parseInt(matcher.group(2)), matcher.group(3));
+            return parserFunction.apply(line);
         }
 
         public boolean isValid() {

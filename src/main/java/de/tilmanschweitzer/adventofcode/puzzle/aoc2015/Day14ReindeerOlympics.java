@@ -1,5 +1,6 @@
 package de.tilmanschweitzer.adventofcode.puzzle.aoc2015;
 
+import de.tilmanschweitzer.adventofcode.common.parser.GenericParser;
 import de.tilmanschweitzer.adventofcode.day.MultiLineAdventOfCodeDay;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -98,6 +99,15 @@ public class Day14ReindeerOlympics extends MultiLineAdventOfCodeDay<Day14Reindee
     @ToString
     @Getter
     public static class Reindeer {
+        private static final Function<String, Reindeer> parseFunction = GenericParser.createParserFunction(
+                "(\\w+) can fly (\\d+) km/s for (\\d+) seconds, but then must rest for (\\d+) seconds",
+                Reindeer::new,
+                GenericParser::string,
+                GenericParser::integer,
+                GenericParser::integer,
+                GenericParser::integer
+        );
+
         final String name;
         final int maxSpeed;
         final int maxSpeedDuration;
@@ -111,19 +121,7 @@ public class Day14ReindeerOlympics extends MultiLineAdventOfCodeDay<Day14Reindee
         }
 
         public static Reindeer parse(String line) {
-            final Pattern parsePattern = Pattern.compile("(\\w+) can fly (\\d+) km/s for (\\d+) seconds, but then must rest for (\\d+) seconds");
-
-            final Matcher matcher = parsePattern.matcher(line);
-            if (!matcher.find()) {
-                throw new RuntimeException("Could not parse line: " + line);
-            }
-
-            final String name = matcher.group(1);
-            final int maxSpeed = Integer.parseInt(matcher.group(2));
-            final int maxSpeedDuration = Integer.parseInt(matcher.group(3));
-            final int restDuration = Integer.parseInt(matcher.group(4));
-
-            return new Reindeer(name, maxSpeed, maxSpeedDuration, restDuration);
+            return parseFunction.apply(line);
         }
 
         public int getFullCycleDuration() {
