@@ -111,7 +111,7 @@ public class Day12WeirdJsonSum extends SingleLineAdventOfCodeDay<String, Integer
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day12-input.txt");
     }
 }

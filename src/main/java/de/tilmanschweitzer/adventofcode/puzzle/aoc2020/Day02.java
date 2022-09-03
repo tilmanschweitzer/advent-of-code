@@ -44,7 +44,7 @@ public class Day02 extends MultiLineAdventOfCodeDay<Day02.PasswordPolicyAndPassw
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2020/day02-input.txt");
     }
 

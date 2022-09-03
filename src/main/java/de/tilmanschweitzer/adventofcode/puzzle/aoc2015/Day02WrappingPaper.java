@@ -34,7 +34,7 @@ public class Day02WrappingPaper extends MultiLineAdventOfCodeDay<Dimensions, Int
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day02-input.txt");
     }
 

@@ -42,7 +42,7 @@ public class Day18AnimatedLights extends MultiLineAdventOfCodeDay<String, Long> 
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day18-input.txt");
     }
 

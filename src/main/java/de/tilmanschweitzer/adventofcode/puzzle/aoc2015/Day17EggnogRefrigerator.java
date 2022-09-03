@@ -35,7 +35,7 @@ public class Day17EggnogRefrigerator extends MultiLineAdventOfCodeDay<Day17Eggno
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day17-input.txt");
     }
 

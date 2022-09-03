@@ -82,7 +82,7 @@ public class Day16AuntSue extends MultiLineAdventOfCodeDay<Day16AuntSue.AuntSue,
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day16-input.txt");
     }
 

@@ -35,7 +35,7 @@ public class Day14ReindeerOlympics extends MultiLineAdventOfCodeDay<Day14Reindee
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day14-input.txt");
     }
 

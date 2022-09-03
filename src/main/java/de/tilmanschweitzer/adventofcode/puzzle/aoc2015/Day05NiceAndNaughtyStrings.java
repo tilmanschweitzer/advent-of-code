@@ -64,7 +64,7 @@ public class Day05NiceAndNaughtyStrings extends MultiLineAdventOfCodeDay<String,
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day05-input.txt");
     }
 

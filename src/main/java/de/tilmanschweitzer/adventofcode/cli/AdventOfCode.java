@@ -3,12 +3,16 @@ package de.tilmanschweitzer.adventofcode.cli;
 import de.tilmanschweitzer.adventofcode.registry.AdventOfCodeRegistry;
 import de.tilmanschweitzer.adventofcode.day.AdventOfCodeDay;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Optional;
 import java.util.ServiceLoader;
 
+import com.google.common.io.Files;
+
 public class AdventOfCode {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         if (args.length < 3) {
             System.err.println("Specify year, day and puzzle of the challenge");
             System.exit(1);
@@ -17,6 +21,7 @@ public class AdventOfCode {
         final int year = Integer.parseInt(args[0]);
         final int day = Integer.parseInt(args[1]);
         final int puzzle = Integer.parseInt(args[2]);
+
 
         final AdventOfCodeRegistry registry = AdventOfCodeRegistry.createRegistryWithExistingDays();
 
@@ -28,6 +33,11 @@ public class AdventOfCode {
         }
 
         final AdventOfCodeDay<?, ?> selectedDay = selectedDayOptional.get();
+
+        if (args.length > 3) {
+            final String inputFileName = args[3];
+            selectedDay.setAlternativeInputStream(new FileInputStream(inputFileName));
+        }
 
         if (puzzle == 1) {
             selectedDay.runFirstPuzzle();

@@ -8,6 +8,8 @@ public abstract class AdventOfCodeDay<I, A> {
 
     final YearAndDay yearAndDay;
 
+    private InputStream alternativeInputStream;
+
     @EqualsAndHashCode
     public static class YearAndDay {
         final int year;
@@ -69,7 +71,18 @@ public abstract class AdventOfCodeDay<I, A> {
 
     protected abstract A getResultOfSecondPuzzle(I input);
 
-    protected abstract InputStream getInputAsStream();
+    protected abstract InputStream getDefaultInputAsStream();
+
+    public void setAlternativeInputStream(InputStream alternativeInputStream) {
+        this.alternativeInputStream = alternativeInputStream;
+    }
+
+    protected InputStream getInputAsStream() {
+        if (alternativeInputStream != null) {
+            return alternativeInputStream;
+        }
+        return getDefaultInputAsStream();
+    }
 
     protected abstract I getParsedInput();
 

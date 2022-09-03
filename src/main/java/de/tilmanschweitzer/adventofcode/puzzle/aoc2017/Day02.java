@@ -35,7 +35,7 @@ public class Day02 extends MultiLineAdventOfCodeDay<List<Integer>, Integer> {
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2017/day02-input.txt");
     }
 

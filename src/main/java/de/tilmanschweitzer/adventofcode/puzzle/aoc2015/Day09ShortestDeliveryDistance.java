@@ -39,7 +39,7 @@ public class Day09ShortestDeliveryDistance extends MultiLineAdventOfCodeDay<Day0
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day09-input.txt");
     }
 

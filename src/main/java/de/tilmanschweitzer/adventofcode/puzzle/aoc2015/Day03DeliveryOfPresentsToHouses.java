@@ -71,7 +71,7 @@ public class Day03DeliveryOfPresentsToHouses extends SingleLineAdventOfCodeDay<L
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day03-input.txt");
     }
 

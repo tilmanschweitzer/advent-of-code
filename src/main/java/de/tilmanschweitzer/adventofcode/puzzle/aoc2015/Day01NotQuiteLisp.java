@@ -32,7 +32,7 @@ public class Day01NotQuiteLisp extends SingleLineAdventOfCodeDay<List<Character>
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day01-input.txt");
     }
 

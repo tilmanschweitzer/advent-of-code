@@ -51,7 +51,7 @@ public class Day13PerfectDinnerHappiness extends MultiLineAdventOfCodeDay<Day13P
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day13-input.txt");
     }
 

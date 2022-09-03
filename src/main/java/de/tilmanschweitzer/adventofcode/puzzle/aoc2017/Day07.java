@@ -181,7 +181,7 @@ public class Day07 extends MultiLineAdventOfCodeDay<Day07.TowerDescription, Stri
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2017/day07-input.txt");
     }
 

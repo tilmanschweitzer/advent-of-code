@@ -32,7 +32,7 @@ public class Day05 extends SingleLineAdventOfCodeDay<String, String> {
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2016/day05-input.txt");
     }
 

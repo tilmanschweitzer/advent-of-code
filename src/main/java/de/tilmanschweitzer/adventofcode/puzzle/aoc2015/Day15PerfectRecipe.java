@@ -39,7 +39,7 @@ public class Day15PerfectRecipe extends MultiLineAdventOfCodeDay<Day15PerfectRec
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day15-input.txt");
     }
 

@@ -60,7 +60,7 @@ public class Day10LookAndSay extends SingleLineAdventOfCodeDay<String, Integer> 
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day10-input.txt");
     }
 

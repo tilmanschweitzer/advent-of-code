@@ -67,7 +67,7 @@ public class Day01 extends SingleLineAdventOfCodeDay<List<Day01.Instruction>, In
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2016/day01-input.txt");
     }
 

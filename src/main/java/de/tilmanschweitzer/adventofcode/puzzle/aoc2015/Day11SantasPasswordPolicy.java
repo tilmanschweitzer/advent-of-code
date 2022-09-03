@@ -111,7 +111,7 @@ public class Day11SantasPasswordPolicy extends SingleLineAdventOfCodeDay<String,
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day11-input.txt");
     }
 }

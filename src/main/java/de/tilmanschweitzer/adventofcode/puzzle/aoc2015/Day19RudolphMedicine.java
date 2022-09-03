@@ -121,7 +121,7 @@ public class Day19RudolphMedicine extends MultiLineAdventOfCodeDay<String, Integ
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day19-input.txt");
     }
 

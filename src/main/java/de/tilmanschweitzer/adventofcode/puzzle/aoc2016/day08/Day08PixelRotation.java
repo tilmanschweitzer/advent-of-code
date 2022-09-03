@@ -39,7 +39,7 @@ public class Day08PixelRotation extends MultiLineAdventOfCodeDay<ModifyScreenCom
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2016/day08-input.txt");
     }
 

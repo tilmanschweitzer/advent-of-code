@@ -40,7 +40,7 @@ public class Day07BobbyTablesLogicGates extends MultiLineAdventOfCodeDay<Circuit
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day07-input.txt");
     }
 

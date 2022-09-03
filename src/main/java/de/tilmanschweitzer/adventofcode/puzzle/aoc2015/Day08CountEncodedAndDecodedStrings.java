@@ -70,7 +70,7 @@ public class Day08CountEncodedAndDecodedStrings extends MultiLineAdventOfCodeDay
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day08-input.txt");
     }
 

@@ -46,7 +46,7 @@ public class Day04MiningAdventCoins extends SingleLineAdventOfCodeDay<String, Lo
     }
 
     @Override
-    protected InputStream getInputAsStream() {
+    protected InputStream getDefaultInputAsStream() {
         return getSystemResourceAsStream("2015/day04-input.txt");
     }
 
