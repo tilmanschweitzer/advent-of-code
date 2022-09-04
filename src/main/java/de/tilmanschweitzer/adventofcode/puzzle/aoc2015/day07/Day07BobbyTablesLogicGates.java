@@ -25,7 +25,7 @@ public class Day07BobbyTablesLogicGates extends MultiLineAdventOfCodeDay<Circuit
     @Override
     public Integer getResultOfFirstPuzzle(final List<CircuitStep> circuitSteps) {
         final Circuit circuit = new Circuit();
-        circuit.applySteps(circuitSteps);
+        CircuitResolver.resolve(circuit, circuitSteps);
         return circuit.getValueForWire("a");
     }
 
@@ -38,7 +38,7 @@ public class Day07BobbyTablesLogicGates extends MultiLineAdventOfCodeDay<Circuit
         final int resultOfFirstPuzzle = (int) getResultOfFirstPuzzle(inputCircuitSteps);
         circuitSteps.add(new ProvideValueToWire(resultOfFirstPuzzle, "b"));
 
-        circuit.applySteps(circuitSteps);
+        CircuitResolver.resolve(circuit, circuitSteps);
         return circuit.getValueForWire("a");
     }
 

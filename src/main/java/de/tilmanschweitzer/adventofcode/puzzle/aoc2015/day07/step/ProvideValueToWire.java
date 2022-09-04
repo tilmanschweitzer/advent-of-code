@@ -18,7 +18,7 @@ public class ProvideValueToWire extends SingleInputCircuitStep {
 
 	@Override
 	public void applyStepToCircuit(Circuit circuit) {
-		circuit.setValueOnWire(targetWire, input);
+		circuit.setValueOnWire(targetWire, input.value(circuit));
 	}
 
 }

@@ -159,15 +159,15 @@ class Day07BobbyTablesLogicGatesTest {
     @Test
     void testCircuit_applyStep() {
         Circuit circuit = new Circuit();
-        circuit.applyStep(new ProvideValueToWire(123, "x"));
-        circuit.applyStep(new ProvideValueToWire(456, "y"));
-        circuit.applyStep(new AndGate("x", "y", "d"));
-        circuit.applyStep(new OrGate("x", "y", "e"));
-        circuit.applyStep(new LeftShiftGate("x", 2, "f"));
-        circuit.applyStep(new RightShiftGate("y", 2, "g"));
-        circuit.applyStep(new NotGate("x", "h"));
-        circuit.applyStep(new NotGate("y", "i"));
-        circuit.applyStep(new ProvideValueToWire("i", "j"));
+        new ProvideValueToWire(123, "x").applyStepToCircuit(circuit);
+        new ProvideValueToWire(456, "y").applyStepToCircuit(circuit);
+        new AndGate("x", "y", "d").applyStepToCircuit(circuit);
+        new OrGate("x", "y", "e").applyStepToCircuit(circuit);
+        new LeftShiftGate("x", 2, "f").applyStepToCircuit(circuit);
+        new RightShiftGate("y", 2, "g").applyStepToCircuit(circuit);
+        new NotGate("x", "h").applyStepToCircuit(circuit);
+        new NotGate("y", "i").applyStepToCircuit(circuit);
+        new ProvideValueToWire("i", "j").applyStepToCircuit(circuit);
 
         assertEquals("{d=72, e=507, f=492, g=114, h=65412, i=65079, j=65079, x=123, y=456}", circuit.getSignalsOnWire().toString());
     }

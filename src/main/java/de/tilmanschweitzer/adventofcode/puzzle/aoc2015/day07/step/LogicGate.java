@@ -1,7 +1,6 @@
 package de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.step;
 
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.Circuit;
-import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.valueprovider.NumericValueProvider;
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.valueprovider.ValueProvider;
 
 public abstract class LogicGate extends DoubleInputCircuitStep {
@@ -21,7 +20,7 @@ public abstract class LogicGate extends DoubleInputCircuitStep {
 	@Override
 	public void applyStepToCircuit(Circuit circuit) {
 		final Integer newValue = logicOperation(leftInput, rightInput, circuit);
-		circuit.setValueOnWire(targetWire, new NumericValueProvider(newValue));
+		circuit.setValueOnWire(targetWire, newValue);
 	}
 
 	public abstract Integer logicOperation(ValueProvider leftValue, ValueProvider rightValue, Circuit circuit);
