@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.toUnmodifiableList;
 
 import java.util.List;
 
+import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.circuit.Circuit;
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.step.CircuitStep;
 import lombok.experimental.UtilityClass;
 

@@ -1,6 +1,7 @@
 package de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07;
 
 import de.tilmanschweitzer.adventofcode.day.MultiLineAdventOfCodeDay;
+import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.circuit.Circuit;
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.parser.AndGateParser;
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.parser.CircuitStepParser;
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.parser.LeftShiftGateParser;

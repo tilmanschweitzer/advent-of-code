@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.circuit.Circuit;
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.parser.AndGateParser;
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.parser.CircuitStepParser;
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.parser.LeftShiftGateParser;

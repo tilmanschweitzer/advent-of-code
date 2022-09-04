@@ -1,4 +1,4 @@
-package de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07;
+package de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.circuit;
 
 import java.util.HashMap;
 import java.util.Map;

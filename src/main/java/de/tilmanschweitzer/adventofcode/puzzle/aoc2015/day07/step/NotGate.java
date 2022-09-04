@@ -1,6 +1,6 @@
 package de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.step;
 
-import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.Circuit;
+import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.circuit.Circuit;
 import de.tilmanschweitzer.adventofcode.puzzle.aoc2015.day07.valueprovider.ValueProvider;
 
 public class NotGate extends LogicGate {
